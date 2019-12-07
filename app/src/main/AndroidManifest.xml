@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.nyu.appsec.assignment5">
 
+<!--Only one permission is needed
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -19,7 +20,6 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -39,7 +39,7 @@
     <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> // why is this here twice?
     <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS" />
     <uses-permission android:name="android.permission.ACCESS_BLUETOOTH_SHARE" />
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
@@ -69,6 +69,8 @@
     <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_READ" />
     <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_WRITE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -78,16 +80,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+<!--
+        Removing SMS Receiver
+
         <receiver
-            android:name=".SMSReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-            </intent-filter>
+             android:name=".SMSReceiver"
+             android:enabled="true"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+             </intent-filter>
         </receiver>
 
         <activity android:name=".LoggingActivity"></activity>
+ -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

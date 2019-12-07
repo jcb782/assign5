@@ -1,5 +1,6 @@
 package edu.nyu.appsec.assignment5;
 
+/*
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +25,18 @@ import java.io.SerializablePermission;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+*/
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class MainActivity extends AppCompatActivity { //implements LocationListener {
     private static final String SPELL_CHECK_URL = "http://appsecclass.report:8080/";
     private static final String KNOWN_HOST = "appsecclass.report";
 
@@ -47,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     /* Get location data to provide language localization
     *  Supported languages ar-DZ zh-CN en-US en-IN en-AU fr-FR
-    */
+
     @Override
     public void onLocationChanged(Location location) {
         URL url = null;
@@ -69,9 +80,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             e.printStackTrace();
         }
     }
+    */
 
     /* Necessary to implement the LocationListener interface
-    */
+
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {}
 
@@ -80,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onProviderDisabled(String s) {}
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +103,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         view.setWebViewClient(new MyWebViewClient());
 
         WebSettings settings = view.getSettings();
-        settings.setAllowFileAccessFromFileURLs(true);
         settings.setJavaScriptEnabled(true);
+
+        /*
+        settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -99,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         }
-
+        */
         setContentView(view);
         view.loadUrl(SPELL_CHECK_URL + "register");
     }
